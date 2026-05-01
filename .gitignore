@@ -1,0 +1,26 @@
+# Build outputs
+**/bin/
+**/obj/
+
+# IDE/user files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# NuGet
+packages/
+*.nupkg
+
+# Secrets
+**/secrets.json
+**/appsettings.*.local.json
+
+# Optional local config
+DevNoteAI.WebApi/appsettings.Local.json
+DevNoteAI.WebApi/appsettings.Development.Local.json

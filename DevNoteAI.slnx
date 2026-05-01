@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="DevNoteAI.Application/DevNoteAI.Application.csproj" />
+  <Project Path="DevNoteAI.Domain/DevNoteAI.Domain.csproj" />
+  <Project Path="DevNoteAI.Infrastructure/DevNoteAI.Infrastructure.csproj" />
+  <Project Path="DevNoteAI.WebApi/DevNoteAI.WebApi.csproj" />
+</Solution>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevNote AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="container">
+    <h1>DevNote AI - Rewrite Dev Notes Instantly</h1>
+
+    <label for="inputText">Your rough text</label>
+    <textarea id="inputText" rows="6" placeholder="Type your text here..."></textarea>
+
+    <label for="toneSelect">Tone</label>
+    <select id="toneSelect">
+      <option>Professional</option>
+      <option>Technical</option>
+      <option>Concise</option>
+      <option>Friendly</option>
+      <option>Bug Report</option>
+      <option>RCA</option>
+      <option>PR Description</option>
+      <option>Daily Scrum Update</option>
+    </select>
+
+    <label for="contextSelect">Context</label>
+    <select id="contextSelect">
+      <option>General</option>
+      <option>QA Testing</option>
+      <option>Software Development</option>
+      <option>HR Software</option>
+      <option>Client Communication</option>
+      <option>Azure DevOps</option>
+      <option>Release Notes</option>
+    </select>
+
+    <button id="rewriteButton" type="button">Rewrite</button>
+
+    <label for="outputText">Output</label>
+    <textarea id="outputText" rows="6" readonly placeholder="Rewritten text appears here..."></textarea>
+
+    <button id="copyButton" type="button" disabled>Copy</button>
+    <p id="statusText" aria-live="polite"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

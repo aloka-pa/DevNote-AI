@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Sans:wght@400;500&family=DM+Mono&display=swap');
+
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: #f4f6fb;
+  color: #1b1f2a;
+}
+
+.container {
+  width: 360px;
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+textarea,
+select,
+button {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #77787b;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+
+textarea,
+select {
+  padding: 8px;
+}
+
+textarea {
+  resize: vertical;
+  font-family: 'DM Mono', monospace;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background: #899afa;
+  color: #000000;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+#statusText {
+  margin: 0;
+  min-height: 16px;
+  font-size: 12px;
+  color: #374151;
+}
