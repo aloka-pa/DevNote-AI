@@ -78,7 +78,7 @@ Response:
 Make sure [Ollama](https://ollama.com) is installed and running, then pull a model:
 
 ```bash
-ollama pull llama3.2
+ollama pull mistral
 ```
 
 Set in `appsettings.Development.json` or via user secrets:
@@ -87,7 +87,7 @@ Set in `appsettings.Development.json` or via user secrets:
 "Ai": {
   "Provider": "Ollama",
   "ApiKey": "ollama",
-  "Model": "llama3.2",
+  "Model": "mistral",
   "Endpoint": "http://localhost:11434/v1/chat/completions"
 }
 ```
