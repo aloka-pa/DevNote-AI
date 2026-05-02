@@ -16,11 +16,6 @@ public sealed class RewriteController(IRewriteTextUseCase rewriteTextUseCase) : 
         [FromBody] RewriteTextRequestDto request,
         CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(request.Text))
-        {
-            return BadRequest(new { message = "Text is required." });
-        }
-
         var useCaseRequest = new RewriteRequest(request.Text, request.Tone, request.Context);
         var result = await rewriteTextUseCase.ExecuteAsync(useCaseRequest, cancellationToken);
 
