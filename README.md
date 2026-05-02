@@ -3,11 +3,13 @@
 DevNote AI is a personal project built to practise **.NET 10** and **Clean Architecture** patterns.
 
 It consists of:
+
 - A browser extension (Chrome/Edge) for rewriting rough developer text.
 - A `.NET 10` backend API built with Clean Architecture.
 
-> ⚠️ **This project uses Ollama (local AI) by default.** It is intentionally not publicly hosted.  
-> To run it yourself, you'll need to swap Ollama for a cloud provider like [Groq](https://console.groq.com) (free) — see configuration below.
+## Purpose
+
+This is not a production app. The goal is to apply Clean Architecture patterns correctly in a real, working project — not just a tutorial clone.
 
 ## Features
 
@@ -37,25 +39,44 @@ It consists of:
 - Azure DevOps
 - Release Notes
 
-## Backend Architecture
+## Architecture Highlights
 
-Projects:
-- `DevNoteAI.Domain` — Core models (`RewriteRequest`, `RewriteResult`).
-- `DevNoteAI.Application` — Use case/handler (`IRewriteTextUseCase`, `RewriteTextUseCase`) and service contract (`IAiRewriteService`).
-- `DevNoteAI.Infrastructure` — AI integration service (`OpenAiRewriteService`) and AI options binding.
-- `DevNoteAI.WebApi` — Exposes `POST /api/rewrite` and composes dependencies via DI.
+- **Dependency Rule strictly enforced** — inner layers have zero knowledge of outer layers
+- **Application layer is not web-aware** — no ASP.NET types, no HTTP concerns, no controller dependencies
+- **Use cases are framework-agnostic** — `RewriteTextUseCase` depends only on interfaces, not implementations
+- **Infrastructure is pluggable** — swap Groq, OpenAI, or Ollama without touching Application or Domain
+- **Strongly typed DTOs** — request/response contracts defined at the boundary, not leaked inward
+- **No business logic in controllers** — controllers only delegate and return
 
-Rules enforced:
+## Project Structure
+
+| Layer | Project | Responsibility |
+|---|---|---|
+| Domain | `DevNoteAI.Domain` | Core models (`RewriteRequest`, `RewriteResult`) |
+| Application | `DevNoteAI.Application` | Use cases, service contracts (`IAiRewriteService`) |
+| Infrastructure | `DevNoteAI.Infrastructure` | AI provider integration (`OpenAiRewriteService`) |
+| Presentation | `DevNoteAI.WebApi` | HTTP controllers, DI composition, entry point |
+
+## Backend Architecture (rules)
+
 - No business logic in controllers.
 - Application does not depend on Infrastructure or WebApi.
 - Strongly typed request/response DTOs.
 - Validation for empty input text.
+
+## What It Does
+
+A browser extension (Chrome/Edge) sends rough developer text to the API, which rewrites it into clean professional output using an AI model.
+
+> ⚠️ **This project uses Ollama (local AI) by default.** It is intentionally not publicly hosted.  
+> To run it yourself, swap Ollama for a cloud provider like [Groq](https://console.groq.com) (free) — see configuration below.
 
 ## API Contract
 
 ### POST `/api/rewrite`
 
 Request:
+
 ```json
 {
   "text": "pls check this bug quick",
@@ -65,6 +86,7 @@ Request:
 ```
 
 Response:
+
 ```json
 {
   "rewrittenText": "Please review this bug as soon as possible."
@@ -92,7 +114,7 @@ Set in `appsettings.Development.json` or via user secrets:
 }
 ```
 
-### Alternative (Groq — if you want to share or run without Ollama)
+### Groq (alternative — run without local Ollama)
 
 Sign up for a free API key at [console.groq.com](https://console.groq.com), then set:
 
